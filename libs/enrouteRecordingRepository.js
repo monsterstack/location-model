@@ -17,6 +17,10 @@ class EnrouteRecordingRepository {
     save(enrouteRecording) {
         return this.EnrouteRecording.save(enrouteRecording);
     }
+
+    onNewRecording(ticketId, handler) {
+
+    }
 }
 
 module.exports.EnrouteRecordingRepository = EnrouteRecordingRepository;
