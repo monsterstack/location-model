@@ -3,6 +3,7 @@
 class InflightAccountRepository {
     constructor(thinky) {
         this.r = thinky.r;
+        let type = thinky.type;
         this.InflightAccount = thinky.createModel('InflightAccount', {
             id: type.string(),
             firstName: type.string(),
@@ -10,7 +11,7 @@ class InflightAccountRepository {
             onBehalfOfTitle: type.string(),
             onBehalfOfLogoUrl: type.string(),
             avatarUrl: type.string(),
-            timestamp: type.date().default(r.now()),
+            timestamp: type.date().default(this.r.now()),
             ttl: type.number()
         });
     }
