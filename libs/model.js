@@ -11,8 +11,10 @@ const thinky = require('thinky')({
 
 
 const InflightAccountRepository = require('./inflightAccountRepository').InflightAccountRepository;
+const TicketRepository = require('./ticketRepository').TicketRepository;
 const inflightAccountRepositoryInstance = new InflightAccountRepository(thinky);
-
+const ticketRepositoryInstance = new TicketRepository(thinky);
 
 
 module.exports.inflightAccountRepository = inflightAccountRepositoryInstance;
+module.exports.ticketRepository = ticketRepositoryInstance;
