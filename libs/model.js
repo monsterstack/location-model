@@ -1,23 +1,17 @@
-const config = require('config');
-const debug = require('debug')('discovery-model');
-const DB = config.db.name;
-const thinky = require('thinky')({
-  host: config.db.host, 
-  port: config.db.port, 
-  max: 25,
-  buffer: 5,
-  db: DB
-});
-
-
+'use strict';
 const InflightAccountRepository = require('./inflightAccountRepository').InflightAccountRepository;
-const TicketRepository = require('./ticketRepository').TicketRepository;
-const EnrouteRecordingRepository = require('./enrouteRecordingRepository').EnrouteRecordingRepository;
-const inflightAccountRepositoryInstance = new InflightAccountRepository(thinky);
-const ticketRepositoryInstance = new TicketRepository(thinky);
-const enrouteRecordingRepositoryInstance = new EnrouteRecordingRepository(thinky);
 
+const createModelFactory = (connection) => {
+  let InflightAccount = connection.model('InflightAccount', mongoose.Schema({
+    name: String,
+  }));
 
-module.exports.inflightAccountRepository = inflightAccountRepositoryInstance;
-module.exports.ticketRepository = ticketRepositoryInstance;
-module.exports.enrouteRecordingRepository = enrouteRecordingRepositoryInstance;
+	// Decorate with Repository
+	InflightAccount.repo = new InflightRepository(InflightAccount);
+
+  return {
+    InflightAccount: InflightAccount
+   };
+};
+
+exports.createModelFactory = createModelFactory;

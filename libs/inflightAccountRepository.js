@@ -1,46 +1,31 @@
 'use strict';
+const Promise = require('promise').Promise;
 
 class InflightAccountRepository {
-    constructor(thinky) {
-        this.r = thinky.r;
-        let type = thinky.type;
-        this.InflightAccount = thinky.createModel('InflightAccount', {
-            id: type.string(),
-            firstName: type.string(),
-            lastName: type.string(),
-            onBehalfOfTitle: type.string(),
-            onBehalfOfLogoUrl: type.string(),
-            avatarUrl: type.string(),
-            timestamp: type.date().default(this.r.now()),
-            ttl: type.number()
-        });
-    }
+	constructor(InflightAccount) {
+		this.InflightAccount = InflightAccount;
+	}
 
-    save(inflightAccount) {
-        return this.InflightAccount.save(inflightAccount);
-    }
+	save(account) {
+		let p = new Promise((resolve, reject) => {
+			resolve(account);
+		});
+		return p;
+	}
 
-    update(inflightAccount) {
-        return this.InflightAccount.get(inflightAccount.id).then((account) => {
-            return account.merge(inflightAccount);
-        });
-    }
+	update(account) {
+		let p = new Promise((resolve, reject) => {
+			resolve(account);
+		});
+		return p;
+	}
 
-    getById(id) {
-        return this.InflightAccount.get(id);
-    }
-
-    deleteById(id) {
-        return this.InflightAccount.get(id).then((account) => {
-            return account.delete();
-        });
-    }
-
-    delete(inflightAccount) {
-        return this.InflightAccount.get(inflightAccount.id).then((account) => {
-            return account.delete();
-        });
-    }
+	findById(id) {
+		let p = new Promise((resolve, reject) => {
+			resolve({});
+		});
+		return p;
+	}
 }
 
 module.exports.InflightAccountRepository = InflightAccountRepository;

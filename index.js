@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./libs/model');
+module.exports.model = require('./libs/model');
