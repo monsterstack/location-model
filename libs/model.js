@@ -1,11 +1,8 @@
 'use strict';
 
 class ModelFactory {
-  constructor(connection) {
-    this.connection = connection;
-  }
 
-  createModels() {
+  createModels(connection) {
     let InflightAccount = connection.model('InflightAccount', mongoose.Schema({
       name: String,
     }));
