@@ -18,8 +18,8 @@ class ModelFactory {
 
 const InflightAccountRepository = require('./inflightAccountRepository').InflightAccountRepository;
 
-const createModelFactory = (connection) => {
-  return new ModelFactory(connection);
+const createModelFactory = () => {
+  return new ModelFactory();
 };
 
 exports.createModelFactory = createModelFactory;
