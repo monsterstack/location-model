@@ -9,7 +9,8 @@ class InflightAccountRepository {
 	save(account) {
 		let _this = this;
 		let p = new Promise((resolve, reject) => {
-			_this.InflightAccount.save(account, (err, doc) => {
+			let acct = new _this.InflightAccount(account);
+			acct.save(account, (err, doc) => {
 				if(err) reject(err);
 				else
 					resolve(doc);
