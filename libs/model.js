@@ -1,5 +1,6 @@
 'use strict';
 const mongoose = require('mongoose');
+const InflightAccountRepository = require('./inflightAccountRepository').InflightAccountRepository;
 
 class ModelFactory {
 
