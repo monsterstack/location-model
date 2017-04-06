@@ -12,6 +12,7 @@
     "checkStyle": "jscs libs services tests --reporter unix"
   },
   "dependencies": {
+    "mongoose": "^4.9.3",
     "multi-tenancy-db": "https://github.com/monsterstack/multi-tenancy-db#development"
   },
   "author": "",
