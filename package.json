@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "mongoose": "^4.9.3",
-    "multi-tenancy-db": "https://github.com/monsterstack/multi-tenancy-db#development"
+    "multi-tenancy-db": "https://github.com/monsterstack/multi-tenancy-db#development",
+    "promise": "^7.1.1"
   },
   "author": "",
   "license": "ISC"
