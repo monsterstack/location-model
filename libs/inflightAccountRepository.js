@@ -8,14 +8,22 @@ class InflightAccountRepository {
 
 	save(account) {
 		let p = new Promise((resolve, reject) => {
-			resolve(account);
+			_this.InflightAccount.save(account, (err, doc) => {
+				if(err) reject(err);
+				else
+					resolve(doc);
+			});
 		});
 		return p;
 	}
 
 	update(account) {
 		let p = new Promise((resolve, reject) => {
-			resolve(account);
+			_this.InflightAccount.update(account, (err, doc) => {
+				if(err) reject(err);
+				else
+					resolve(doc);
+			});
 		});
 		return p;
 	}
