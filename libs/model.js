@@ -10,7 +10,7 @@ class ModelFactory {
     }));
 
 	  // Decorate with Repository
-	  InflightAccount.repo = new InflightRepository(InflightAccount);
+	  InflightAccount.repo = new InflightAccountRepository(InflightAccount);
 
     return {
       InflightAccount: InflightAccount
