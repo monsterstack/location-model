@@ -27,7 +27,6 @@ class ModelFactory {
       ticketId: String,
     }));
 
-	  // Decorate with Repository
 	  InflightAccount.repo = new InflightAccountRepository(InflightAccount);
     Ticket.repo = new TicketRepository(Ticket);
     //GeoRecording.repo = new GeoRecordingRepository(GeoRecording);

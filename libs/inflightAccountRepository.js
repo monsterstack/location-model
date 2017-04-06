@@ -1,45 +1,30 @@
 'use strict';
 const Promise = require('promise');
+const Repository = require('./repository').Repository;
+const mongoose = require('mongoose');
 
-class InflightAccountRepository {
+class InflightAccountRepository extends Repository {
 	constructor(InflightAccount) {
+		super();
 		this.InflightAccount = InflightAccount;
 	}
 
 	save(account) {
 		let _this = this;
-		let p = new Promise((resolve, reject) => {
-			let acct = new _this.InflightAccount(account);
-			acct.save(account, (err, doc) => {
-				if(err) reject(err);
-				else
-					resolve(doc);
-			});
-		});
-		return p;
+		let acct = new _this.InflightAccount(account);
+		return acct.save(acct);
 	}
 
 	update(account) {
 		let _this = this;
-		let p = new Promise((resolve, reject) => {
-			_this.InflightAccount.update(account, (err, doc) => {
-				if(err) reject(err);
-				else
-					resolve(doc);
-			});
+		return _this.InflightAccount.update({ _id: mongoose.Types.ObjectId(account._id) }, account).then((mods) => {
+			return account;
 		});
-		return p;
 	}
 
 	findById(id) {
-		let p = new Promise((resolve, reject) => {
-			_this.InflightAccount.findOne({ _id: ObjectId(id) }).then((doc) => {
-				resolve(doc);
-			}).catch((err) => {
-				reject(err);
-			});
-		});
-		return p;
+		let _this = this;
+		return _this.InflightAccount.findOne({ _id: mongoose.Types.ObjectId(id) }).exec();
 	}
 }
 

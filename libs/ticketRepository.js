@@ -1,57 +1,32 @@
 'use strict';
 const Promise = require('promise');
+const Repository = require('./repository').Repository;
 
-class TicketRepository {
+class TicketRepository extends Repository {
 	constructor(Ticket) {
+		super();
 		this.Ticket = Ticket;
 	}
 
 	save(ticket) {
 		let _this = this;
-		let p = new Promise((resolve, reject) => {
-			let tck = new _this.Ticket(ticket);
-			tck.save(ticket, (err, doc) => {
-				if(err) reject(err);
-				else
-					resolve(doc);
-			});
-		});
-		return p;
+		let tck = new _this.Ticket(ticket);
+		return tck.save();
 	}
 
 	update(ticket) {
 		let _this = this;
-		let p = new Promise((resolve, reject) => {
-			let tck = new _this.Ticket(ticket);
-			tck.update({_id: ticket._id}, ticket, (err, doc) => {
-				if(err) reject(err);
-				else
-					resolve(doc);
-			});
-		});
-		return p;
+		return _this.Ticket.update({ _id: ticket._id }, ticket);
 	}
 
 	findById(id) {
-		let p = new Promise((resolve, reject) => {
-			_this.Ticket.findOne({ _id: ObjectId(id) }).then((doc) => {
-				resolve(doc);
-			}).catch((err) => {
-				reject(err);
-			});
-		});
-		return p;
+		let _this = this;
+		return _this.Ticket.findOne({ _id: mongoose.Types.ObjectId(id) }).exec();
 	}
 
 	findByAccountId(id) {
-		let p = new Promise((resolve, reject) => {
-			_this.Ticket.findOne({ accountId: id }).then((docs) => {
-				resolve(docs);
-			}).catch((err) => {
-				reject(err);
-			});
-		});
-		return p;
+		let _this = this;
+		return _this.Ticket.findOne({ accountId: id }).exec();
 	}
 }
 
