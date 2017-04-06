@@ -55,4 +55,4 @@ class TicketRepository {
 	}
 }
 
-module.exports.InflightAccountRepository = InflightAccountRepository;
+module.exports.TicketRepository = TicketRepository;
