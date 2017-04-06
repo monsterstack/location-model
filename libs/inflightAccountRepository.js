@@ -7,6 +7,7 @@ class InflightAccountRepository {
 	}
 
 	save(account) {
+		let _this = this;
 		let p = new Promise((resolve, reject) => {
 			_this.InflightAccount.save(account, (err, doc) => {
 				if(err) reject(err);
@@ -18,6 +19,7 @@ class InflightAccountRepository {
 	}
 
 	update(account) {
+		let _this = this;
 		let p = new Promise((resolve, reject) => {
 			_this.InflightAccount.update(account, (err, doc) => {
 				if(err) reject(err);
