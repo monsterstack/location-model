@@ -30,10 +30,11 @@ class ModelFactory {
 	  // Decorate with Repository
 	  InflightAccount.repo = new InflightAccountRepository(InflightAccount);
     Ticket.repo = new TicketRepository(Ticket);
-    GeoRecording.repo = new GeoRecordingRepository(GeoRecording);
+    //GeoRecording.repo = new GeoRecordingRepository(GeoRecording);
 
     return {
-      InflightAccount: InflightAccount
+      InflightAccount: InflightAccount,
+      Ticket: Ticket,
     };
   }
 }
