@@ -1,5 +1,5 @@
 'use strict';
-const Promise = require('promise').Promise;
+const Promise = require('promise');
 
 class InflightAccountRepository {
 	constructor(InflightAccount) {
