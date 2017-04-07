@@ -1,0 +1,7 @@
+{
+	"preset": "airbnb",
+	"requireShorthandArrowFunctions": false,
+  "requireParenthesesAroundIIFE": false,
+	"disallowEmptyBlocks": false,
+	"maximumLineLength": 150
+}
