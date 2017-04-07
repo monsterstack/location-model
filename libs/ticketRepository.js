@@ -1,6 +1,7 @@
 'use strict';
 const Promise = require('promise');
 const Repository = require('./repository').Repository;
+const mongoose = require('mongoose');
 
 class TicketRepository extends Repository {
   constructor(Ticket) {
