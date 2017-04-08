@@ -15,9 +15,9 @@ class InflightAccountRepository extends Repository {
     return acct.save(acct);
   }
 
-  update(account) {
+  update(accountId, account) {
     let _this = this;
-    return _this.InflightAccount.update({ _id: mongoose.Types.ObjectId(account._id) }, account).then((mods) => {
+    return _this.InflightAccount.findByIdAndUpdate(accountId, account).then((mods) => {
       return account;
     });
   }
