@@ -17,8 +17,8 @@ class InflightAccountRepository extends Repository {
 
   update(accountId, account) {
     let _this = this;
-    return _this.InflightAccount.findByIdAndUpdate(accountId, account).then((mods) => {
-      return account;
+    return _this.InflightAccount.findByIdAndUpdate(accountId, account).then((updatedAccount) => {
+      return updatedAccount;
     });
   }
 
