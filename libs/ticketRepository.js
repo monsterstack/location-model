@@ -15,11 +15,9 @@ class TicketRepository extends Repository {
     return tck.save();
   }
 
-  update(ticket) {
+  update(ticketId, ticket) {
     let _this = this;
-    return _this.Ticket.update({ _id: mongoose.Types.ObjectId(ticket._id) }, ticket).then((mods) => {
-      return ticket;
-    });
+    return _this.Ticket.findByIdAndUpdate(ticketId, ticket);
   }
 
   findById(id) {
