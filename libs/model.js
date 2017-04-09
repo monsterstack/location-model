@@ -1,6 +1,7 @@
 'use strict';
 const mongoose = require('mongoose');
 const InflightAccountRepository = require('./inflightAccountRepository').InflightAccountRepository;
+const GeoRecordingRepository = require('./geoRecordingRepository').GeoRecordingRepository;
 const TicketRepository = require('./ticketRepository').TicketRepository;
 class ModelFactory {
 
@@ -30,7 +31,7 @@ class ModelFactory {
     InflightAccount.repo = new InflightAccountRepository(InflightAccount);
     Ticket.repo = new TicketRepository(Ticket);
 
-    //GeoRecording.repo = new GeoRecordingRepository(GeoRecording);
+    GeoRecording.repo = new GeoRecordingRepository(GeoRecording);
 
     return {
       InflightAccount: InflightAccount,
