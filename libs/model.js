@@ -3,7 +3,22 @@ const mongoose = require('mongoose');
 const InflightAccountRepository = require('./inflightAccountRepository').InflightAccountRepository;
 const GeoRecordingRepository = require('./geoRecordingRepository').GeoRecordingRepository;
 const TicketRepository = require('./ticketRepository').TicketRepository;
+
+// Duplicate the ID field.
+mongoose.Schema.virtual('id').get(() => {
+  return this._id.toHexString();
+});
+
+// Ensure virtual fields are serialised.
+mongoose.Schema.set('toJSON', {
+  virtuals: true,
+});
+
 class ModelFactory {
+
+  constructor() {
+
+  }
 
   createModels(connection) {
     let InflightAccount = connection.model('InflightAccount', mongoose.Schema({
