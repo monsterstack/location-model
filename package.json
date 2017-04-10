@@ -12,6 +12,7 @@
     "checkStyle": "jscs libs tests --reporter unix"
   },
   "dependencies": {
+    "meanie-mongoose-to-json": "^1.2.1",
     "mongoose": "^4.9.3",
     "multi-tenancy-db": "https://github.com/monsterstack/multi-tenancy-db#development",
     "promise": "^7.1.1"

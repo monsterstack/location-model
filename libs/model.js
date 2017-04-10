@@ -1,18 +1,10 @@
 'use strict';
 const mongoose = require('mongoose');
+mongoose.plugin(require('meanie-mongoose-to-json'));
+
 const InflightAccountRepository = require('./inflightAccountRepository').InflightAccountRepository;
 const GeoRecordingRepository = require('./geoRecordingRepository').GeoRecordingRepository;
 const TicketRepository = require('./ticketRepository').TicketRepository;
-
-// Duplicate the ID field.
-mongoose.Schema.virtual('id').get(() => {
-  return this._id.toHexString();
-});
-
-// Ensure virtual fields are serialised.
-mongoose.Schema.set('toJSON', {
-  virtuals: true,
-});
 
 class ModelFactory {
 
