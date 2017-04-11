@@ -7,6 +7,11 @@ mongoose.plugin(require('meanie-mongoose-to-json'));
 const paginate = (query, options) => {
   let p = new Promise((resolve, reject) => {
     require('mongoose-paginate')(query, options).then((page) => {
+      if (page.docs) {
+        page.elements = page.docs;
+        delete page.docs;
+      }
+
       resolve(page);
     }).catch((err) => {
       reject(err);
