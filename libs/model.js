@@ -1,6 +1,7 @@
 'use strict';
 const mongoose = require('mongoose');
 mongoose.plugin(require('meanie-mongoose-to-json'));
+mongoose.plugin(require('mongoose-paginate'));
 
 const InflightAccountRepository = require('./inflightAccountRepository').InflightAccountRepository;
 const GeoRecordingRepository = require('./geoRecordingRepository').GeoRecordingRepository;
