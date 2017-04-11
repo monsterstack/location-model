@@ -29,6 +29,11 @@ class TicketRepository extends Repository {
     let _this = this;
     return _this.Ticket.findOne({ accountId: id }).exec();
   }
+
+  page(query, offset, limit) {
+    let _this = this;
+    return _this.Ticket.page(query, { offset: offset, limit: limit });
+  }
 }
 
 module.exports.TicketRepository = TicketRepository;

@@ -24,6 +24,11 @@ class InflightAccountRepository extends Repository {
     let _this = this;
     return _this.InflightAccount.findOne({ _id: mongoose.Types.ObjectId(id) }).exec();
   }
+
+  page(query, offset, limit) {
+    let _this = this;
+    return _this.InflightAccount.page(query, { offset: offset, limit: limit });
+  }
 }
 
 module.exports.InflightAccountRepository = InflightAccountRepository;
