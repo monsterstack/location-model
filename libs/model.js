@@ -1,7 +1,21 @@
 'use strict';
+const Promise = require('promise');
 const mongoose = require('mongoose');
 mongoose.plugin(require('meanie-mongoose-to-json'));
-mongoose.plugin(require('mongoose-paginate'));
+
+/* Monkey Patch */
+const paginate = (query, options) => {
+  let p = new Promise((resolve, reject) => {
+    require('mongoose-paginate')(query, options).then((page) => {
+      resolve(page);
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+  return p;
+};
+
+mongoose.plugin(paginate);
 
 const InflightAccountRepository = require('./inflightAccountRepository').InflightAccountRepository;
 const GeoRecordingRepository = require('./geoRecordingRepository').GeoRecordingRepository;
