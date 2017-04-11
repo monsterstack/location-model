@@ -27,7 +27,7 @@ class InflightAccountRepository extends Repository {
 
   page(query, offset, limit) {
     let _this = this;
-    return _this.InflightAccount.page(query, { offset: offset, limit: limit });
+    return _this.InflightAccount.paginate(query, { offset: offset, limit: limit });
   }
 }
 
