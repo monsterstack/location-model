@@ -29,6 +29,11 @@ class GeoRecordingRepository extends Repository {
     let _this = this;
     return _this.GeoRecording.findOne({ ticketId: id }).exec();
   }
+
+  page(query, offset, limit) {
+    let _this = this;
+    return _this.GeoRecording.paginate(query, { offset: offset, limit: limit });
+  }
 }
 
 module.exports.GeoRecordingRepository = GeoRecordingRepository;
