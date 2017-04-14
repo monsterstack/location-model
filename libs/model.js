@@ -4,16 +4,18 @@ const mongoose = require('mongoose');
 const mPage = require('mongoose-paginate');
 mongoose.plugin(require('meanie-mongoose-to-json'));
 
-const paginate = (query, options) => {
-  return mPage(query, options).then((results) => {
-    if (results.docs) {
-      results.elements = results.docs;
-      delete results.docs;
-    }
-  });
+const paginatePlugin = {
+  paginate: (query, options) => {
+    return mPage.paginate(query, options).then((results) => {
+      if (results.docs) {
+        results.elements = results.docs;
+        delete results.docs;
+      }
+    });
+  }
 };
 
-mongoose.plugin(paginate);
+mongoose.plugin(paginatePlugin);
 
 const InflightAccountRepository = require('./inflightAccountRepository').InflightAccountRepository;
 const GeoRecordingRepository = require('./geoRecordingRepository').GeoRecordingRepository;
