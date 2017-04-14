@@ -15,7 +15,7 @@ const paginatePlugin = {
   }
 };
 
-mongoose.plugin(paginatePlugin);
+mongoose.plugin(mPage);
 
 const InflightAccountRepository = require('./inflightAccountRepository').InflightAccountRepository;
 const GeoRecordingRepository = require('./geoRecordingRepository').GeoRecordingRepository;
