@@ -4,8 +4,10 @@ const mongoose = require('mongoose');
 const mPage = require('mongoose-paginate');
 mongoose.plugin(require('meanie-mongoose-to-json'));
 
+const oldMpage = mPage.paginate;
+
 mPage.paginate = (query, options) => {
-  return mPage.paginate(query, options).then((results) => {
+  return oldMpage(query, options).then((results) => {
     if (results.docs) {
       results.elements = results.docs;
       delete results.docs;
