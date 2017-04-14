@@ -25,9 +25,9 @@ class InflightAccountRepository extends Repository {
     return _this.InflightAccount.findOne({ _id: mongoose.Types.ObjectId(id) }).exec();
   }
 
-  page(query, page, limit) {
+  page(query, limit, offset) {
     let _this = this;
-    return _this.InflightAccount.paginate(query, { page: page, limit: limit });
+    return _this.InflightAccount.paginate(query, { offset: offset, limit: limit });
   }
 }
 
