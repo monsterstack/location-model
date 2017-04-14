@@ -4,15 +4,13 @@ const mongoose = require('mongoose');
 const mPage = require('mongoose-paginate');
 mongoose.plugin(require('meanie-mongoose-to-json'));
 
-const paginatePlugin = {
-  paginate: (query, options) => {
-    return mPage.paginate(query, options).then((results) => {
-      if (results.docs) {
-        results.elements = results.docs;
-        delete results.docs;
-      }
-    });
-  }
+mPage.paginate = (query, options) => {
+  return mPage.paginate(query, options).then((results) => {
+    if (results.docs) {
+      results.elements = results.docs;
+      delete results.docs;
+    }
+  });
 };
 
 mongoose.plugin(mPage);
