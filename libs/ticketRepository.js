@@ -32,7 +32,7 @@ class TicketRepository extends Repository {
 
   page(query, offset, limit) {
     let _this = this;
-    return _this.Ticket.page(query, { offset: offset, limit: limit });
+    return _this.Ticket.paginate(query, { offset: offset, limit: limit });
   }
 }
 
