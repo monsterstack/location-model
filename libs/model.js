@@ -12,6 +12,7 @@ mPage.paginate = (query, options) => {
       results.elements = results.docs;
       delete results.docs;
     }
+    return results;
   });
 };
 
