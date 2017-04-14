@@ -1,8 +1,19 @@
 'use strict';
 const Promise = require('promise');
 const mongoose = require('mongoose');
+const mPage = require('mongoose-paginate');
 mongoose.plugin(require('meanie-mongoose-to-json'));
-mongoose.plugin(require('mongoose-paginate'));
+
+const paginate = (query, options) => {
+  return mPage(query, options).then((results) => {
+    if (results.docs) {
+      results.elements = results.docs;
+      delete results.docs;
+    }
+  });
+};
+
+mongoose.plugin(paginate);
 
 const InflightAccountRepository = require('./inflightAccountRepository').InflightAccountRepository;
 const GeoRecordingRepository = require('./geoRecordingRepository').GeoRecordingRepository;
