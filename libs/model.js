@@ -12,6 +12,7 @@ mPage.paginate = (query, options) => {
       results.elements = results.docs;
       delete results.docs;
     }
+
     return results;
   });
 };
@@ -51,14 +52,21 @@ class ModelFactory {
       ticketId: String,
     }));
 
+    let GeoFence = connection.model('GeoFence', mongoose.Schema({
+      coordinates: [[Number]],
+      accountId: String,
+    }));
+
     InflightAccount.repo = new InflightAccountRepository(InflightAccount);
     Ticket.repo = new TicketRepository(Ticket);
     GeoRecording.repo = new GeoRecordingRepository(GeoRecording);
+    GeoFence.repo = new GeoFenceRepository(GeoFence);
 
     return {
       InflightAccount: InflightAccount,
       Ticket: Ticket,
       GeoRecording: GeoRecording,
+      GeoFence: GeoFence,
     };
   }
 }
