@@ -21,6 +21,7 @@ mongoose.plugin(mPage);
 
 const InflightAccountRepository = require('./inflightAccountRepository').InflightAccountRepository;
 const GeoRecordingRepository = require('./geoRecordingRepository').GeoRecordingRepository;
+const GeoFenceRepository = require('./geoFenceRepository').GeoFenceRepository;
 const TicketRepository = require('./ticketRepository').TicketRepository;
 
 class ModelFactory {
@@ -55,6 +56,7 @@ class ModelFactory {
     let GeoFence = connection.model('GeoFence', mongoose.Schema({
       coordinates: [[Number]],
       accountId: String,
+      callbackUrl: String,
     }));
 
     InflightAccount.repo = new InflightAccountRepository(InflightAccount);
