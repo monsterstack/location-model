@@ -55,7 +55,7 @@ class ModelFactory {
 
     let GeoFence = connection.model('GeoFence', mongoose.Schema({
       coordinates: [[Number]],
-      accountId: String,
+      ticketId: String,
       callbackUrl: String,
     }));
 
